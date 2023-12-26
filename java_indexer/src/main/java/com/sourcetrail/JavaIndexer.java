@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -228,8 +229,7 @@ public class JavaIndexer
 		if (classesJarEntry != null)
 		{
 			InputStream inputStream = jarFile.getInputStream(classesJarEntry);
-			File tempFile = File.createTempFile(
-				"jar_file_from_" + Utility.getFilenameWithoutExtension(aarFilePath) + "_", ".jar");
+			File tempFile = Files.createTempFile("jar_file_from_" + Utility.getFilenameWithoutExtension(aarFilePath) + "_", ".jar").toFile();
 			tempFile.deleteOnExit();
 
 			byte[] buffer = new byte[8 * 1024];
