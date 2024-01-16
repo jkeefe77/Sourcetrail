@@ -56,6 +56,6 @@ public class IntegerLiteralExpr extends StringLiteralExpr {
 	public final boolean isMinValue() {
 		return value != null && //
 				value.length() == 10 && //
-				value.equals(UNSIGNED_MIN_VALUE);
+				UNSIGNED_MIN_VALUE.equals(value);
 	}
 }
