@@ -1,5 +1,6 @@
 package com.sourcetrail.gradle;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -91,7 +92,7 @@ public class InfoRetriever
 		try (BufferedReader reader = new BufferedReader(new StringReader(output)))
 		{
 			String line;
-			while ((line = reader.readLine()) != null)
+			while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null)
 			{
 				paths.add(line);
 			}
